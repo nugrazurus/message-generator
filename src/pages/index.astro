@@ -1,0 +1,82 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+	<div class="w-full h-screen flex">
+		<div class="mx-auto my-auto">
+			<h1 class="text-4xl font-bold mb-4">
+				Welcome to Message Generator
+			</h1>
+			<p class="text-lg">
+				Create and share personalized messages easily.
+			</p>
+			<fieldset class="fieldset">
+				<legend class="fieldset-legend">Page title</legend>
+				<input
+					id="name"
+					type="text"
+					class="input mb-2"
+					placeholder="My awesome page"
+				/>
+				<div class="card w-96 bg-accent-content card-md shadow-sm">
+					<div class="card-body">
+						<h2 class="card-title">Message</h2>
+						<p id="message"></p>
+						<div class="justify-end card-actions">
+							<button class="btn btn-primary" id="copyBtn">Copy</button>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+	</div>
+</Layout>
+
+<script>
+	const nameInput = document.getElementById("name") as HTMLInputElement;
+	const messageOutput = document.getElementById(
+		"message",
+	) as HTMLParagraphElement;
+	const urlTemplate = "https://rahmanugra.site?name=";
+	const template = `Kepada Yth. {name} <br /><br />
+		Assalamualaikum Wr.Wb
+		<br />
+		<br />
+		Dengan memohon rahmat dan ridho Allah SWT, perkenankan kami<br />
+		mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami Rahmanita Widiyanti, S.Kom dan Nugra Zurus Pratama, S.Kom<br />
+		Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu<br />
+		berkenan untuk hadir dan memberikan doa restu.<br />
+		<br />
+		Informasi mengenai detail acara, lokasi, reservasi dan waktu lebih lengkap<br />
+		dapat diakses pada tautan terlampir<br />
+		<br />
+		{url}
+		<br /><br />
+		Atas kehadiran dan doa restu Bapak/Ibu, Terima kasih. Wassalamualikum Wr. Wb.<br />
+		<br />
+		Hormat Kami, yang berbahagia. Rahmanita dan Nugra`;
+
+	nameInput.addEventListener("input", (e) => {
+		const target = e?.target as HTMLInputElement;
+		const message = template
+			.replace("{name}", target.value || "Tamu Undangan")
+			.replace(
+				"{url}",
+				urlTemplate +
+					encodeURIComponent(target.value || "Tamu Undangan"),
+			);
+		messageOutput.setHTMLUnsafe(message);
+	});
+	const copyContent = async () => {
+		let textToCopy = (document.getElementById("message") as HTMLParagraphElement).innerText;
+		try {
+			await navigator.clipboard.writeText(textToCopy);
+			alert("Content copied to clipboard!");
+		} catch (err) {
+			console.error("Failed to copy: ", err);
+			alert("Failed to copy content.");
+		}
+	};
+	document.getElementById("copyBtn")?.addEventListener("click", copyContent);
+</script>
