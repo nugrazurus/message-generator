@@ -39,23 +39,26 @@ import Layout from "../layouts/Layout.astro";
 		"message",
 	) as HTMLParagraphElement;
 	const urlTemplate = "https://rahmanugra.site?name=";
-	const template = `Kepada Yth. {name} <br /><br />
-		Assalamualaikum Wr.Wb
+	const template = `Kepada Yth. *{name}* <br /><br />
+		Assalamualaikum Warahmatullahi Wabarakatuh.
 		<br />
 		<br />
-		Dengan memohon rahmat dan ridho Allah SWT, perkenankan kami<br />
-		mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami Rahmanita Widiyanti, S.Kom dan Nugra Zurus Pratama, S.Kom<br />
-		Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu<br />
-		berkenan untuk hadir dan memberikan doa restu.<br />
+		Dengan memohon rahmat serta ridho Allah SWT., perkenankan kami <br/>
+		mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami
+		<br/ ><br /> *Rahmanita Widiyanti, S.Kom* 
+		<br /> &
+		<br /> *Nugra Zurus Pratama, S.Kom*
+		<br /><br />
+		Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu berkenan untuk hadir dan memberikan doa restu. <br />
 		<br />
-		Informasi mengenai detail acara, lokasi, reservasi dan waktu lebih lengkap<br />
-		dapat diakses pada tautan terlampir<br />
+		Informasi mengenai detail acara, lokasi, reservasi, dan waktu lebih lengkap dapat diakses pada tautan terlampir.<br />
 		<br />
 		{url}
 		<br /><br />
-		Atas kehadiran dan doa restu Bapak/Ibu, Terima kasih. Wassalamualikum Wr. Wb.<br />
+		Atas kehadiran dan doa restu Bapak/Ibu kami ucapkan terima kasih. 
+		<br/> <br/> Wassalamualikum Warahmatullahi Wabarakatuh.<br />
 		<br />
-		Hormat Kami, yang berbahagia. Rahmanita dan Nugra`;
+		Kami yang berbahagia, Rahmanita & Nugra`;
 
 	nameInput.addEventListener("input", (e) => {
 		const target = e?.target as HTMLInputElement;
